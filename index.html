@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#2c3e50">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <title>Merge Blocks Game - Play Merge Blocks Online Free</title>
+    <meta name="description" content="Play Merge Blocks Game online for free! Merge matching number blocks, build your city, and beat the high score. No download needed, play in browser.">
+    <link rel="canonical" href="https://mergeblocksgame.com/">
+    <script id="game-schema" type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Merge Blocks Game","genre":["Puzzle","Strategy"],"playMode":"SinglePlayer","applicationCategory":"Game","description":"Play Merge Blocks Game online for free! Merge matching number blocks and build your city.","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+    <!-- GA4_PLACEHOLDER - 替换为你的 GA4 测量 ID -->
+    <style>
+:root {
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: ui-rounded, "Arial Rounded MT Bold", "Trebuchet MS", var(--font-body);
+  --font-zh: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-ja: "Hiragino Sans", "Yu Gothic", Meiryo, "Noto Sans CJK JP", sans-serif;
+  --color-page: #fafafa;
+  --color-primary: #007f99;
+  --color-primary-bright: #00b4d8;
+  --color-primary-soft: #e6f9fc;
+  --color-action-start: #4f46e5;
+  --color-action-end: #7c3aed;
+  --color-action-soft: #eef2ff;
+  --game-cyan: #0097b8;
+  --game-coral: #e95870;
+  --game-yellow: #b77905;
+  --game-mint: #168866;
+  --game-navy: #172554;
+  --color-card: #ffffff;
+  --color-text: #222222;
+  --color-muted: #666666;
+  --color-border: #e8e8e8;
+  --color-dark: #102a33;
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 12px 28px rgba(0, 84, 102, 0.14);
+  --radius-card: 16px;
+  --radius-button: 12px;
+  --container: 1200px;
+}
+
+html:lang(zh-CN) {
+  --font-body: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-display: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+}
+
+html:lang(ja) {
+  --font-body: "Hiragino Sans", "Yu Gothic", Meiryo, "Noto Sans CJK JP", sans-serif;
+  --font-display: "Hiragino Sans", "Yu Gothic", Meiryo, "Noto Sans CJK JP", sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { color-scheme: light; scroll-behavior: smooth; }
+body, h1, h2, p, ol, ul { margin: 0; }
+body { min-width: 320px; }
+button, input, select { font: inherit; }
+img, iframe { display: block; max-width: 100%; }
+a { color: inherit; }
+
+body {
+  background: var(--color-page);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-synthesis: none;
+  line-height: 1.6;
+}
+.container { width: min(100% - 32px, var(--container)); margin-inline: auto; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.skip-link { position: fixed; z-index: 100; top: 8px; left: 8px; padding: 10px 14px; border-radius: 8px; color: #fff; background: var(--color-primary); transform: translateY(-160%); }
+.skip-link:focus { transform: translateY(0); }
+:focus-visible { outline: 3px solid var(--color-primary-bright); outline-offset: 3px; }
+h1 { font-size: clamp(2.25rem, 7vw, 4.25rem); line-height: 1.02; letter-spacing: -0.055em; }
+h2 { margin-bottom: 12px; font-size: clamp(1.4rem, 4vw, 2rem); line-height: 1.2; letter-spacing: -0.025em; }
+h1, h2, .game-card strong, .primary-button, .secondary-button { font-family: var(--font-display); }
+html:lang(zh-CN) h1, html:lang(zh-CN) h2, html:lang(ja) h1, html:lang(ja) h2 { letter-spacing: -0.02em; }
+.eyebrow { display: inline-block; margin-bottom: 10px; color: var(--color-primary); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+
+.site-header { position: sticky; z-index: 20; top: 0; border-bottom: 1px solid var(--color-border); background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(14px); }
+.header-inner { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 14px; min-height: 64px; padding-block: 8px; }
+.site-logo { display: inline-flex; align-items: center; gap: 10px; color: var(--color-text); font-size: 1rem; font-weight: 900; letter-spacing: -0.03em; text-decoration: none; white-space: nowrap; }
+.logo-mark { display: grid; grid-template-columns: repeat(2, 9px); grid-template-rows: repeat(2, 9px); gap: 2px; width: 26px; height: 26px; transform: rotate(-8deg); }
+.logo-mark i { display: block; border-radius: 4px; background: var(--color-primary-bright); }
+.logo-mark i:nth-child(1) { grid-row: 1 / 3; }
+.logo-mark i:nth-child(2) { background: #ffb703; }
+.logo-mark i:nth-child(3) { background: #fb7185; }
+.header-actions { display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
+.language-control select { min-height: 44px; max-width: 116px; padding: 8px 28px 8px 10px; border: 1px solid var(--color-border); border-radius: var(--radius-button); color: var(--color-text); background: #fff; }
+main { padding-bottom: 56px; }
+.games-section { margin-block: 48px; }
+.section-heading { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 14px; margin-bottom: 20px; }
+.section-heading h2 { margin-bottom: 0; }
+.games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px; }
+.content-grid { position: relative; display: grid; gap: 24px; margin-top: 48px; padding: 24px; border-radius: 24px; background: linear-gradient(180deg, rgba(238, 242, 255, 0.72), rgba(230, 249, 252, 0.42)); }
+.content-card { padding: clamp(22px, 4vw, 36px); border: 0; border-radius: var(--radius-card); background: var(--color-card); box-shadow: var(--shadow-card); }
+.content-card p { max-width: 72ch; color: #52525b; font-size: 1.05rem; line-height: 1.72; }
+.section-kicker { display: inline-block; margin-bottom: 8px; color: var(--color-action-start); font-size: 0.76rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+html:lang(zh-CN) .section-kicker, html:lang(ja) .section-kicker { letter-spacing: 0.04em; text-transform: none; }
+.about-card { position: relative; overflow: hidden; border-top: 4px solid var(--color-action-start); }
+.about-copy { position: relative; z-index: 1; }
+.prose-stack { display: grid; gap: 16px; }
+.prose-stack p { max-width: 78ch; }
+.value-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; padding: 0; list-style: none; }
+.value-list li { display: inline-flex; min-height: 38px; align-items: center; gap: 8px; padding: 7px 12px; border: 1px solid #e4e4e7; border-radius: 999px; color: #3f3f46; background: #fff; font-size: 0.88rem; font-weight: 750; }
+.value-dot { width: 9px; height: 9px; border-radius: 3px; background: var(--game-cyan); }
+.value-dot-mint { background: var(--game-mint); }
+.value-dot-yellow { background: var(--game-yellow); }
+.how-card { border-top: 4px solid var(--game-cyan); }
+.steps-list { display: grid; gap: 14px; margin-top: 20px; padding: 0; list-style: none; counter-reset: none; }
+.step-card { position: relative; min-width: 0; padding: 18px; border: 1px solid #e4e4e7; border-radius: 14px; background: #fafafa; }
+.step-card strong { display: block; margin: 12px 0 5px; color: var(--game-navy); font-family: var(--font-display); font-size: 1.05rem; }
+.step-card p { font-size: 0.92rem; line-height: 1.55; }
+.step-tip { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px; margin-top: 14px; padding-top: 12px; border-top: 1px solid color-mix(in srgb, var(--step-color) 24%, transparent); }
+.step-tip span:first-child { align-self: start; padding: 2px 7px; border-radius: 999px; color: #fff; background: var(--step-color); font-size: 0.7rem; font-weight: 800; line-height: 1.45; }
+.step-tip span:last-child { color: #454550; }
+.step-number { display: grid; width: 32px; height: 32px; place-items: center; border-radius: 10px; color: #fff; background: var(--step-color, var(--game-cyan)); font-family: var(--font-display); font-weight: 900; }
+.step-cyan { --step-color: var(--game-cyan); background: #f0fbfd; }
+.step-blue { --step-color: #2563eb; background: #f3f7ff; }
+.step-violet { --step-color: var(--color-action-start); background: #f6f5ff; }
+.step-coral { --step-color: var(--game-coral); background: #fff5f6; }
+.tags-card { border-top: 4px solid var(--game-yellow); }
+.tag-list { display: flex; flex-wrap: wrap; gap: 9px; padding: 0; list-style: none; }
+.tag-list span, .tag-list a { display: inline-flex; min-height: 36px; align-items: center; padding: 6px 12px; border-radius: 999px; color: #3f3f46; background: #f4f4f5; font-size: 0.88rem; font-weight: 700; text-decoration: none; }
+.tag-list a { color: #3730a3; background: #eef2ff; }
+.tag-list a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.skills-card { border-top: 4px solid var(--game-mint); }
+.skills-list { display: grid; gap: 12px; padding: 0; list-style: none; }
+.skills-list li { display: grid; grid-template-columns: 14px minmax(0, 1fr); align-items: start; gap: 11px; }
+.skills-list li > span:last-child { display: grid; gap: 2px; }
+.skills-list strong { color: var(--game-navy); font-family: var(--font-display); font-size: 0.95rem; }
+.skills-list small { color: #5f6068; font-size: 0.84rem; line-height: 1.45; }
+.skill-mark { width: 12px; height: 12px; margin-top: 5px; border-radius: 4px; background: var(--game-cyan); transform: rotate(8deg); }
+.skill-violet { background: var(--color-action-start); }
+.skill-blue { background: #2563eb; }
+.skill-yellow { background: var(--game-yellow); }
+.skill-coral { background: var(--game-coral); }
+.faq-card { border-top: 4px solid var(--color-action-start); }
+.faq-list { display: grid; gap: 12px; margin-top: 22px; }
+.faq-list details { overflow: clip; border: 1px solid #e4e4e7; border-radius: 14px; background: #fff; }
+.faq-list summary { position: relative; padding: 18px 52px 18px 18px; color: var(--game-navy); font-family: var(--font-display); font-size: 1rem; font-weight: 800; line-height: 1.45; cursor: pointer; list-style: none; }
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after { position: absolute; top: 50%; right: 18px; content: "+"; color: var(--color-action-start); font-family: var(--font-body); font-size: 1.5rem; font-weight: 500; transform: translateY(-50%); }
+.faq-list details[open] summary::after { content: "−"; }
+.faq-list summary:focus-visible { outline: 3px solid rgba(79, 70, 229, 0.28); outline-offset: -3px; }
+.faq-answer { padding: 0 18px 20px; border-top: 1px solid #f0f0f2; }
+.faq-answer p { max-width: 82ch; padding-top: 16px; font-size: 0.96rem; }
+.play-again-card { display: flex; flex-direction: column; align-items: flex-start; gap: 22px; margin-top: 28px; padding: clamp(24px, 4vw, 38px); border: 1px solid #dfe3ff; border-radius: var(--radius-card); background: #f1f3ff; }
+.play-again-card h2 { margin-bottom: 7px; color: var(--game-navy); }
+.play-again-card p { color: #52525b; }
+.play-again-card .primary-button { flex: 0 0 auto; }
+.site-footer { padding: 30px 0; border-top: 1px solid var(--color-border); background: #fff; color: var(--color-text); }
+.footer-inner { display: grid; gap: 18px; text-align: center; }
+.site-footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px; }
+.site-footer a { color: var(--color-primary); font-weight: 700; }
+.site-footer p { color: var(--color-muted); font-size: 0.9rem; }
+
+.ad-slot { display: grid; min-height: 90px; margin-block: 22px; place-items: center; border: 1px dashed #d4d4d4; border-radius: var(--radius-card); color: var(--color-muted); background: #fff; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.primary-button, .secondary-button { display: inline-flex; min-height: 46px; align-items: center; justify-content: center; gap: 8px; border-radius: var(--radius-button); cursor: pointer; font-weight: 800; text-decoration: none; transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, border-color 180ms ease; }
+.primary-button { padding: 12px 24px; border: 1px solid transparent; color: #fff; background: linear-gradient(135deg, var(--color-action-start), var(--color-action-end)); box-shadow: 0 8px 20px rgba(79, 70, 229, 0.24); }
+.primary-button:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(79, 70, 229, 0.32); }
+.secondary-button { width: 100%; margin-top: 12px; padding: 11px 20px; border: 1px solid #c7d2fe; color: var(--color-action-start); background: rgba(255, 255, 255, 0.94); box-shadow: 0 4px 12px rgba(79, 70, 229, 0.08); }
+.secondary-button::before { content: "⛶"; font-size: 1.05em; font-weight: 400; }
+.secondary-button:hover { border-color: #a5b4fc; background: var(--color-action-soft); box-shadow: 0 8px 18px rgba(79, 70, 229, 0.14); transform: translateY(-1px); }
+.primary-button:active, .secondary-button:active { transform: translateY(0); box-shadow: 0 3px 8px rgba(79, 70, 229, 0.14); }
+.header-play { display: none; }
+.status-message { min-height: 1.6em; margin-top: 7px; color: #a9362a; text-align: center; }
+.game-card { min-width: 0; overflow: hidden; border-radius: var(--radius-card); background: var(--color-card); box-shadow: var(--shadow-card); transition: transform 180ms ease, box-shadow 180ms ease; }
+.game-card[hidden] { display: none; }
+.game-card:hover, .game-card:focus-within { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.game-card a { display: block; height: 100%; color: var(--color-text); text-decoration: none; }
+.game-card img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; background: linear-gradient(135deg, var(--color-primary-soft), #dff3ff); }
+.game-card-body { display: grid; gap: 4px; padding: 14px; }
+.game-card strong { display: -webkit-box; overflow: hidden; min-height: 2.7em; line-height: 1.35; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.game-card small { overflow: hidden; color: var(--color-muted); text-overflow: ellipsis; white-space: nowrap; }
+.search-empty { padding: 40px 24px; border-radius: var(--radius-card); color: var(--color-muted); background: #fff; box-shadow: var(--shadow-card); text-align: center; }
+.search-empty[hidden] { display: none; }
+.search-empty span { display: block; margin-bottom: 6px; color: var(--color-primary-bright); font-size: 2.5rem; }
+
+.game-section { display: grid; gap: 14px; padding-block: 20px 10px; }
+.game-heading { display: flex; width: 100%; align-items: end; justify-content: space-between; gap: 16px; margin-inline: auto; }
+.game-heading h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); letter-spacing: -0.04em; }
+.game-heading p { margin-top: 3px; color: var(--color-muted); font-size: 0.94rem; }
+.game-heading .secondary-button { flex: 0 0 auto; width: auto; margin: 0; padding-inline: 18px; }
+.game-column { width: 100%; margin-inline: auto; padding: 8px; border-radius: var(--radius-card); background: #fff; box-shadow: var(--shadow-card); }
+.game-shell { position: relative; overflow: hidden; width: 100%; aspect-ratio: 1662 / 935; border-radius: 12px; background: var(--color-dark); }
+.game-shell iframe { width: 100%; height: 100%; border: 0; background: var(--color-dark); }
+.mobile-overlay { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; background: linear-gradient(135deg, rgba(0, 180, 216, 0.9), rgba(16, 42, 51, 0.96)); }
+.mobile-overlay[hidden] { display: none; }
+
+@media (min-width: 560px) {
+  .games-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 24px; }
+  .steps-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 768px) {
+  .container { width: min(100% - 64px, var(--container)); }
+  .header-inner { grid-template-columns: minmax(0, 1fr) auto; gap: 24px; }
+  .header-actions { grid-column: 2; }
+  .header-play { display: inline-flex; }
+  .mobile-overlay { display: none; }
+  .game-section { min-height: calc(100dvh - 64px); align-content: center; padding-block: 16px; }
+  .game-heading, .game-column { width: min(100%, calc((100dvh - 180px) * 1662 / 935)); }
+  .game-column { padding: 10px; }
+  .content-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .content-card:not(.compact-card) { grid-column: 1 / -1; }
+  .play-again-card { flex-direction: row; align-items: center; justify-content: space-between; }
+  .footer-inner { grid-template-columns: 1fr auto; align-items: center; text-align: left; }
+  .site-footer nav { justify-content: flex-start; }
+}
+@media (min-width: 1024px) {
+  .game-column { padding: 12px; }
+  .steps-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+  .game-card:hover, .game-card:focus-within { transform: none; }
+}
+
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <nav class="container header-inner" aria-label="Primary navigation">
+        <a class="site-logo" href="/" data-i18n-aria="logoLabel">
+          <span class="logo-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>Merge Blocks</span>
+        </a>
+        <div class="header-actions">
+          <div class="language-control">
+            <label class="visually-hidden" for="language-select" data-i18n="languageLabel">Language</label>
+            <select id="language-select" data-i18n-aria="languageLabel">
+              <option value="en">English</option>
+              <option value="zh-CN">简体中文</option>
+              <option value="es">Español</option>
+              <option value="pt-BR">Português</option>
+              <option value="ja">日本語</option>
+            </select>
+          </div>
+          <a class="primary-button header-play" href="#game-section" data-i18n="playNow">Play now</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content" class="container">
+      <section id="game-section" class="game-section" aria-labelledby="game-section-title">
+        <div class="game-heading">
+          <div>
+            <h1 id="game-section-title" data-i18n="heading">Merge Blocks Game</h1>
+            <p data-i18n="tagline">Merge matching blocks, plan every move, and grow your city.</p>
+          </div>
+          <button id="fullscreen-button" class="secondary-button" type="button" data-i18n="fullscreen">Fullscreen</button>
+        </div>
+        <div id="game-col" class="game-column">
+          <div id="game-shell" class="game-shell">
+            <iframe id="game" src="https://uncached.gamemonetize.co/1j7atg0orrnccj05jvljx0fomms2n3h7/" title="Merge Blocks Game" data-i18n-title="gameFrameTitle" loading="eager" allow="fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <div id="mobile-overlay" class="mobile-overlay">
+              <button id="play-button" class="primary-button" type="button" data-i18n-aria="play">
+                <span aria-hidden="true">▶</span>
+                <span data-i18n="play">Play game</span>
+              </button>
+            </div>
+          </div>
+          <p id="game-status" class="status-message" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      
+
+      <section class="games-section" aria-labelledby="related-title">
+        <div class="section-heading">
+          <div>
+            <h2 id="related-title" data-i18n="relatedTitle">More Merge Games</h2>
+          </div>
+        </div>
+        <div id="games-grid" class="games-grid">
+          <article class="game-card" data-game-card data-game-slug="merge-blocks-online" data-search="merge blocks online play merge blocks online in your browser and combine matching number blocks with careful, score-building moves. merge blocks city puzzle">
+            <a href="/merge-blocks-online/" aria-label="Merge Blocks Online" data-i18n-aria="related.mergeBlocksOnline">
+              <img src="/assets/images/games/merge-blocks-online.jpg" width="512" height="512" loading="lazy" alt="Merge Blocks Online" data-i18n-alt="related.mergeBlocksOnline">
+              <span class="game-card-body">
+                <strong data-i18n="related.mergeBlocksOnline">Merge Blocks Online</strong>
+              </span>
+            </a>
+          </article>
+          <article class="game-card" data-game-card data-game-slug="merge-number-puzzle" data-search="merge number puzzle try a relaxing merge number puzzle that rewards planning, number recognition, and smart use of every grid space. number puzzle strategy connect">
+            <a href="/merge-number-puzzle/" aria-label="Merge Number Puzzle" data-i18n-aria="related.mergeNumberPuzzle">
+              <img src="/assets/images/games/merge-number-puzzle.jpg" width="512" height="512" loading="lazy" alt="Merge Number Puzzle" data-i18n-alt="related.mergeNumberPuzzle">
+              <span class="game-card-body">
+                <strong data-i18n="related.mergeNumberPuzzle">Merge Number Puzzle</strong>
+              </span>
+            </a>
+          </article>
+          <article class="game-card" data-game-card data-game-slug="merge-numbers-game" data-search="merge numbers game play a merge numbers game where groups of matching values become larger blocks and open new strategic choices. numbers grid tiles strategy">
+            <a href="/merge-numbers-game/" aria-label="Merge Numbers Game" data-i18n-aria="related.mergeNumbersGame">
+              <img src="/assets/images/games/merge-numbers-game.jpg" width="512" height="512" loading="lazy" alt="Merge Numbers Game" data-i18n-alt="related.mergeNumbersGame">
+              <span class="game-card-body">
+                <strong data-i18n="related.mergeNumbersGame">Merge Numbers Game</strong>
+              </span>
+            </a>
+          </article>
+          <article class="game-card" data-game-card data-game-slug="merge-blocks-free" data-search="merge blocks free enjoy merge blocks free in your browser with no download and challenge yourself to build a bigger city and score. free blocks city casual">
+            <a href="/merge-blocks-free/" aria-label="Merge Blocks Free" data-i18n-aria="related.mergeBlocksFree">
+              <img src="/assets/images/games/merge-blocks-free.jpg" width="512" height="512" loading="lazy" alt="Merge Blocks Free" data-i18n-alt="related.mergeBlocksFree">
+              <span class="game-card-body">
+                <strong data-i18n="related.mergeBlocksFree">Merge Blocks Free</strong>
+              </span>
+            </a>
+          </article>
+          <article class="game-card" data-game-card data-game-slug="merge-number-game" data-search="merge number game play a free merge number game and plan each block placement before the puzzle grid runs out of room. number logic planning board">
+            <a href="/merge-number-game/" aria-label="Merge Number Game" data-i18n-aria="related.mergeNumberGame">
+              <img src="/assets/images/games/merge-number-game.jpg" width="512" height="512" loading="lazy" alt="Merge Number Game" data-i18n-alt="related.mergeNumberGame">
+              <span class="game-card-body">
+                <strong data-i18n="related.mergeNumberGame">Merge Number Game</strong>
+              </span>
+            </a>
+          </article>
+          <article class="game-card" data-game-card data-game-slug="merge-blocks-2048" data-search="merge blocks 2048 explore merge blocks 2048-style number strategy by combining matching tiles and working toward higher values. 2048 tiles number brain">
+            <a href="/merge-blocks-2048/" aria-label="Merge Blocks 2048" data-i18n-aria="related.mergeBlocks2048">
+              <img src="/assets/images/games/merge-blocks-2048.jpg" width="512" height="512" loading="lazy" alt="Merge Blocks 2048" data-i18n-alt="related.mergeBlocks2048">
+              <span class="game-card-body">
+                <strong data-i18n="related.mergeBlocks2048">Merge Blocks 2048</strong>
+              </span>
+            </a>
+          </article>
+        </div>
+      </section>
+
+      
+
+      <div class="content-grid">
+        <section class="content-card about-card">
+          <div class="about-copy">
+            <span class="section-kicker" data-i18n="introKicker">Build. Merge. Grow.</span>
+            <h2 data-i18n="introTitle">About Merge Blocks Game</h2>
+            <div class="prose-stack">
+              <p data-i18n="introParagraphs.0">Merge Blocks Game turns a simple placement puzzle into a growing city. Each turn gives you a numbered block and asks you to choose an empty square on the board. When three or more blocks with the same value touch, they combine into a larger building. That quick transformation is easy to understand, but the square you choose changes which connections will remain possible several turns later.</p>
+              <p data-i18n="introParagraphs.1">Your goal is to keep the board open while creating increasingly valuable merges. Empty space matters as much as score: scattered numbers can separate useful groups, while a planned cluster can create room and prepare the next upgrade. The run ends when no practical space remains, so every placement is both a small reward and a decision about the future shape of your city.</p>
+              <p data-i18n="introParagraphs.2">Successful merges add points, and reaching 1,000 points awards a demolition point that can remove a troublesome block. This rescue tool is most powerful when saved for a genuine bottleneck. Instead of chasing one universal record, you can measure progress against your own best score, the size of your buildings, and how long you keep a flexible board alive.</p>
+              <p data-i18n="introParagraphs.3">The game stays compelling because every turn is short, visible, and meaningful. A modest match can trigger a satisfying upgrade, open a blocked lane, or set up a larger chain. There is always a tempting immediate move and a potentially stronger patient move, which makes another run feel like a fresh chance to build a cleaner, smarter city.</p>
+            </div>
+            <ul class="value-list" aria-label="Game highlights" data-i18n-aria="valueListLabel">
+              <li><span class="value-dot value-dot-cyan" aria-hidden="true"></span><span data-i18n="values.merge">Merge 3+</span></li>
+              <li><span class="value-dot value-dot-mint" aria-hidden="true"></span><span data-i18n="values.build">Build a City</span></li>
+              <li><span class="value-dot value-dot-yellow" aria-hidden="true"></span><span data-i18n="values.score">Beat Your Score</span></li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="content-card how-card">
+          <span class="section-kicker" data-i18n="howKicker">Four simple moves</span>
+          <h2 data-i18n="howTitle">How to Play</h2>
+          <ol class="steps-list">
+            <li class="step-card step-cyan">
+              <span class="step-number" aria-hidden="true">1</span>
+              <strong data-i18n="stepTitles.0">Place</strong>
+              <p data-i18n="stepDescriptions.0">Look at the next numbered block, then tap or click an empty square to place it. A central square offers several possible neighbors, while an edge or corner can protect an organized group but may provide fewer escape routes. Before confirming a move, scan the whole board and imagine where one or two upcoming values could fit.</p>
+              <p class="step-tip"><span data-i18n="tipLabel">Tip</span><span data-i18n="stepTips.0">Keep at least one open route between active groups so a future block can connect them instead of becoming isolated.</span></p>
+            </li>
+            <li class="step-card step-blue">
+              <span class="step-number" aria-hidden="true">2</span>
+              <strong data-i18n="stepTitles.1">Connect</strong>
+              <p data-i18n="stepDescriptions.1">Connect three or more blocks that show the same number to merge them into a higher-level block or building. Matching blocks only need to belong to the same connected group; they do not have to form a perfectly straight line. Notice where the upgraded block will sit, because its new position can either begin another match or interrupt a useful route.</p>
+              <p class="step-tip"><span data-i18n="tipLabel">Tip</span><span data-i18n="stepTips.1">Aim to place the new higher-level block near another block of that value, preparing a second merge instead of ending the chain.</span></p>
+            </li>
+            <li class="step-card step-violet">
+              <span class="step-number" aria-hidden="true">3</span>
+              <strong data-i18n="stepTitles.2">Manage</strong>
+              <p data-i18n="stepDescriptions.2">Treat every open square as a limited resource, because the run ends when the grid becomes full and no useful placement remains. Small merges create breathing room, but placing unrelated values across the board can divide the grid into awkward pockets. Balance the points available now against the space and connections that a more patient setup may create later.</p>
+              <p class="step-tip"><span data-i18n="tipLabel">Tip</span><span data-i18n="stepTips.2">Preserve one flexible zone with several neighboring empty cells; it gives unexpected numbers somewhere useful to go.</span></p>
+            </li>
+            <li class="step-card step-coral">
+              <span class="step-number" aria-hidden="true">4</span>
+              <strong data-i18n="stepTitles.3">Demolish</strong>
+              <p data-i18n="stepDescriptions.3">Earn a demolition point whenever your score reaches another 1,000-point milestone, then use it to remove a block that is restricting the board. Demolition is a recovery tool rather than a routine move, so spending it on the first inconvenient square may waste its larger strategic value. Pause before using it and compare which removal creates the most future connections.</p>
+              <p class="step-tip"><span data-i18n="tipLabel">Tip</span><span data-i18n="stepTips.3">Remove the block that opens multiple lanes or reunites separated groups, not simply the block with the lowest number.</span></p>
+            </li>
+          </ol>
+        </section>
+
+        <section class="content-card compact-card tags-card">
+          <h2 data-i18n="tagsTitle">Tags</h2>
+          <ul class="tag-list">
+            <li><span data-i18n="tags.0">merge blocks</span></li>
+            <li><span data-i18n="tags.1">merge game</span></li>
+            <li><span data-i18n="tags.2">number puzzle</span></li>
+            <li><span data-i18n="tags.3">block game</span></li>
+            <li><span data-i18n="tags.4">2048 puzzle</span></li>
+            <li><a href="/merge-blocks-online/" data-i18n="tags.5">merge blocks online</a></li>
+            <li><a href="/merge-blocks-free/" data-i18n="tags.6">merge blocks free</a></li>
+          </ul>
+        </section>
+
+        <section class="content-card compact-card skills-card">
+          <h2 data-i18n="skillsTitle">Skills You Practice</h2>
+          <ul class="skills-list">
+            <li><span class="skill-mark skill-violet" aria-hidden="true"></span><span><strong data-i18n="skills.0">Strategy</strong><small data-i18n="skillDescriptions.0">Strategy grows as you compare the quick reward of an immediate merge with the greater value of saving connected blocks for a stronger chain later.</small></span></li>
+            <li><span class="skill-mark skill-blue" aria-hidden="true"></span><span><strong data-i18n="skills.1">Planning</strong><small data-i18n="skillDescriptions.1">Planning improves when you reserve useful spaces for upcoming numbers and higher-level buildings instead of filling every convenient square as soon as it appears.</small></span></li>
+            <li><span class="skill-mark skill-cyan" aria-hidden="true"></span><span><strong data-i18n="skills.2">Spatial reasoning</strong><small data-i18n="skillDescriptions.2">Spatial reasoning is practiced by reading neighboring cells, open regions, blocked corners, and the routes that could connect separate matching groups in future turns.</small></span></li>
+            <li><span class="skill-mark skill-yellow" aria-hidden="true"></span><span><strong data-i18n="skills.3">Number recognition</strong><small data-i18n="skillDescriptions.3">Number recognition becomes faster as you repeatedly scan the grid for equal values, upgrade sequences, and groups that need only one more block to merge.</small></span></li>
+            <li><span class="skill-mark skill-coral" aria-hidden="true"></span><span><strong data-i18n="skills.4">Decision making</strong><small data-i18n="skillDescriptions.4">Decision making develops because each placement asks you to balance immediate score, remaining space, the risk of isolation, and the opportunity created for later moves.</small></span></li>
+          </ul>
+        </section>
+
+        <section class="content-card faq-card" aria-labelledby="faq-title">
+          <span class="section-kicker" data-i18n="faqKicker">Quick answers</span>
+          <h2 id="faq-title" data-i18n="faqTitle">Frequently Asked Questions</h2>
+          <div class="faq-list">
+            <details><summary data-i18n="faq.0.question">Is Merge Blocks Game free to play?</summary><div class="faq-answer"><p data-i18n="faq.0.answer">Yes. You can play Merge Blocks Game in a supported web browser without paying, creating an account, or downloading an app. Open the page, wait for the embedded game to load, and press Play. The basic game remains available on desktop, tablet, and mobile devices with a modern browser and a stable internet connection. The site may display clearly separated advertising after advertising is configured, and the third-party game provider may show its own loading or service messages, but an advertisement is not a purchase requirement. If the game does not start, first disable an overly strict content blocker for this page, confirm that JavaScript and third-party iframe content are allowed, and reload over HTTPS. You should never need to install an unknown browser extension or provide payment details simply to begin a normal session.</p></div></details>
+            <details><summary data-i18n="faq.1.question">What is the highest score in Merge Blocks Game?</summary><div class="faq-answer"><p data-i18n="faq.1.answer">There is no verified universal highest score that applies to every version, device, or session of Merge Blocks Game. Scores can depend on the version supplied by the game provider, the sequence of incoming blocks, how long the board stays open, and whether a player uses demolition points efficiently. For that reason, this site does not present an invented world record or promise a fixed maximum. The most useful target is your own best result: record the score at the end of a strong run, then try to improve it through better space management and longer merge chains. A high score usually comes from preserving options rather than taking every available match immediately. Keeping advanced blocks close to compatible values, avoiding isolated low blocks, and saving recovery tools for crowded boards will generally support longer, more productive sessions.</p></div></details>
+            <details><summary data-i18n="faq.2.question">How do I get a demolition point?</summary><div class="faq-answer"><p data-i18n="faq.2.answer">You receive a demolition point when your score reaches a 1,000-point milestone. The point lets you remove one block from the grid, which can recover space or reconnect areas that have been separated by an awkward placement. Earning the tool is automatic; the strategic decision is when and where to spend it. Avoid using demolition only because one low-value block looks untidy. Instead, examine the cells around each obstacle and choose a removal that opens several useful neighboring squares, joins two matching groups, or creates a safe location for the next block. If the board still has comfortable open space, keeping the point for later is often stronger than using it immediately. When the grid becomes crowded, one carefully chosen demolition can extend the run long enough to create another scoring chain and move toward the next 1,000-point milestone.</p></div></details>
+            <details><summary data-i18n="faq.3.question">Can I undo a move?</summary><div class="faq-answer"><p data-i18n="faq.3.answer">The current version does not provide a standard undo button for reversing a completed placement. Once a block has been placed and any resulting merge has resolved, that board state becomes part of the run. This makes the short pause before each move important: check the next value, scan for existing groups, and look at the empty cells that would remain afterward. If you make an inconvenient move, the run is not necessarily lost. You may be able to connect the isolated block later, build around it, or use a demolition point once you earn one. Treat mistakes as new planning constraints rather than a reason to restart immediately. Because browser refresh behavior is controlled by the embedded game provider, refreshing the page should not be considered a reliable undo method and may reset the entire session instead of restoring a previous turn.</p></div></details>
+            <details><summary data-i18n="faq.4.question">Is there a time limit?</summary><div class="faq-answer"><p data-i18n="faq.4.answer">There is no visible turn timer forcing you to place the next block within a few seconds, so you can normally study the grid and play at your own pace. The pressure comes from space rather than a countdown: every block occupies a cell, and the run approaches its end as flexible empty areas disappear. Use the absence of a timer to compare several placements before choosing one. Check whether a move creates a merge now, prepares a higher-value match, blocks a corner, or separates two promising groups. On mobile, you can also take a moment to confirm the intended square before tapping. The embedded provider controls session behavior, so leaving the browser tab inactive for a long period or reloading the page may not preserve the current run. For a normal active session, however, thoughtful planning is more important than speed.</p></div></details>
+          </div>
+        </section>
+      </div>
+
+      <section class="play-again-card" aria-labelledby="play-again-title">
+        <div>
+          <span class="section-kicker" data-i18n="ctaKicker">One more run?</span>
+          <h2 id="play-again-title" data-i18n="ctaTitle">Ready to build a bigger city?</h2>
+          <p data-i18n="ctaBody">Beat your best score with a smarter next move.</p>
+        </div>
+        <a class="primary-button play-again-link" href="#game-section" data-i18n="ctaButton">Play again</a>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <nav aria-label="Legal">
+          <a href="/about/" data-i18n="about">About</a>
+          <a href="/privacy-policy/" data-i18n="privacy">Privacy Policy</a>
+          <a href="/terms/" data-i18n="terms">Terms of Service</a>
+        </nav>
+        <p>© <span id="copyright-year"></span> <span data-i18n="copyright">Merge Blocks Game. All rights reserved.</span></p>
+      </div>
+    </footer>
+
+    <script id="translations-data" type="application/json">{"en":{"languageLabel":"Language","logoLabel":"Merge Blocks Game home","searchLabel":"Search games","searchPlaceholder":"Search merge games...","searchResults":"Matching games: {count}","searchNoResults":"No games match your search. Try another title or keyword.","playNow":"Play now","advertisement":"Advertisement","play":"Play game","fullscreen":"Fullscreen","fullscreenError":"Fullscreen is not available. You can continue playing here.","gameFrameTitle":"Merge Blocks Game","about":"About","privacy":"Privacy Policy","terms":"Terms of Service","copyright":"Merge Blocks Game. All rights reserved.","meta":{"title":"Merge Blocks Game - Play Merge Blocks Online Free","description":"Play Merge Blocks Game online for free! Merge matching number blocks, build your city, and beat the high score. No download needed, play in browser.","schemaDescription":"Play Merge Blocks Game online for free! Merge matching number blocks and build your city."},"heading":"Merge Blocks Game","tagline":"Merge matching blocks, plan every move, and grow your city.","introKicker":"Build. Merge. Grow.","introTitle":"About Merge Blocks Game","introParagraphs":["Merge Blocks Game turns a simple placement puzzle into a growing city. Each turn gives you a numbered block and asks you to choose an empty square on the board. When three or more blocks with the same value touch, they combine into a larger building. That quick transformation is easy to understand, but the square you choose changes which connections will remain possible several turns later.","Your goal is to keep the board open while creating increasingly valuable merges. Empty space matters as much as score: scattered numbers can separate useful groups, while a planned cluster can create room and prepare the next upgrade. The run ends when no practical space remains, so every placement is both a small reward and a decision about the future shape of your city.","Successful merges add points, and reaching 1,000 points awards a demolition point that can remove a troublesome block. This rescue tool is most powerful when saved for a genuine bottleneck. Instead of chasing one universal record, you can measure progress against your own best score, the size of your buildings, and how long you keep a flexible board alive.","The game stays compelling because every turn is short, visible, and meaningful. A modest match can trigger a satisfying upgrade, open a blocked lane, or set up a larger chain. There is always a tempting immediate move and a potentially stronger patient move, which makes another run feel like a fresh chance to build a cleaner, smarter city."],"valueListLabel":"Game highlights","values":{"merge":"Merge 3+","build":"Build a City","score":"Beat Your Score"},"howKicker":"Four thoughtful moves","howTitle":"How to Play","stepTitles":["Place","Connect","Manage","Demolish"],"stepDescriptions":["Look at the next numbered block, then tap or click an empty square to place it. A central square offers several possible neighbors, while an edge or corner can protect an organized group but may provide fewer escape routes. Before confirming a move, scan the whole board and imagine where one or two upcoming values could fit.","Connect three or more blocks that show the same number to merge them into a higher-level block or building. Matching blocks only need to belong to the same connected group; they do not have to form a perfectly straight line. Notice where the upgraded block will sit, because its new position can either begin another match or interrupt a useful route.","Treat every open square as a limited resource, because the run ends when the grid becomes full and no useful placement remains. Small merges create breathing room, but placing unrelated values across the board can divide the grid into awkward pockets. Balance the points available now against the space and connections that a more patient setup may create later.","Earn a demolition point whenever your score reaches another 1,000-point milestone, then use it to remove a block that is restricting the board. Demolition is a recovery tool rather than a routine move, so spending it on the first inconvenient square may waste its larger strategic value. Pause before using it and compare which removal creates the most future connections."],"tipLabel":"Tip","stepTips":["Keep at least one open route between active groups so a future block can connect them instead of becoming isolated.","Aim to place the new higher-level block near another block of that value, preparing a second merge instead of ending the chain.","Preserve one flexible zone with several neighboring empty cells; it gives unexpected numbers somewhere useful to go.","Remove the block that opens multiple lanes or reunites separated groups, not simply the block with the lowest number."],"tagsTitle":"Tags","tags":["merge blocks","merge game","number puzzle","block game","2048 puzzle","merge blocks online","merge blocks free"],"skillsTitle":"Skills You Practice","skills":["Strategy","Planning","Spatial reasoning","Number recognition","Decision making"],"skillDescriptions":["Strategy grows as you compare the quick reward of an immediate merge with the greater value of saving connected blocks for a stronger chain later.","Planning improves when you reserve useful spaces for upcoming numbers and higher-level buildings instead of filling every convenient square as soon as it appears.","Spatial reasoning is practiced by reading neighboring cells, open regions, blocked corners, and the routes that could connect separate matching groups in future turns.","Number recognition becomes faster as you repeatedly scan the grid for equal values, upgrade sequences, and groups that need only one more block to merge.","Decision making develops because each placement asks you to balance immediate score, remaining space, the risk of isolation, and the opportunity created for later moves."],"faqKicker":"Quick answers","faqTitle":"Frequently Asked Questions","faq":[{"question":"Is Merge Blocks Game free to play?","answer":"Yes. You can play Merge Blocks Game in a supported web browser without paying, creating an account, or downloading an app. Open the page, wait for the embedded game to load, and press Play. The basic game remains available on desktop, tablet, and mobile devices with a modern browser and a stable internet connection. The site may display clearly separated advertising after advertising is configured, and the third-party game provider may show its own loading or service messages, but an advertisement is not a purchase requirement. If the game does not start, first disable an overly strict content blocker for this page, confirm that JavaScript and third-party iframe content are allowed, and reload over HTTPS. You should never need to install an unknown browser extension or provide payment details simply to begin a normal session."},{"question":"What is the highest score in Merge Blocks Game?","answer":"There is no verified universal highest score that applies to every version, device, or session of Merge Blocks Game. Scores can depend on the version supplied by the game provider, the sequence of incoming blocks, how long the board stays open, and whether a player uses demolition points efficiently. For that reason, this site does not present an invented world record or promise a fixed maximum. The most useful target is your own best result: record the score at the end of a strong run, then try to improve it through better space management and longer merge chains. A high score usually comes from preserving options rather than taking every available match immediately. Keeping advanced blocks close to compatible values, avoiding isolated low blocks, and saving recovery tools for crowded boards will generally support longer, more productive sessions."},{"question":"How do I get a demolition point?","answer":"You receive a demolition point when your score reaches a 1,000-point milestone. The point lets you remove one block from the grid, which can recover space or reconnect areas that have been separated by an awkward placement. Earning the tool is automatic; the strategic decision is when and where to spend it. Avoid using demolition only because one low-value block looks untidy. Instead, examine the cells around each obstacle and choose a removal that opens several useful neighboring squares, joins two matching groups, or creates a safe location for the next block. If the board still has comfortable open space, keeping the point for later is often stronger than using it immediately. When the grid becomes crowded, one carefully chosen demolition can extend the run long enough to create another scoring chain and move toward the next 1,000-point milestone."},{"question":"Can I undo a move?","answer":"The current version does not provide a standard undo button for reversing a completed placement. Once a block has been placed and any resulting merge has resolved, that board state becomes part of the run. This makes the short pause before each move important: check the next value, scan for existing groups, and look at the empty cells that would remain afterward. If you make an inconvenient move, the run is not necessarily lost. You may be able to connect the isolated block later, build around it, or use a demolition point once you earn one. Treat mistakes as new planning constraints rather than a reason to restart immediately. Because browser refresh behavior is controlled by the embedded game provider, refreshing the page should not be considered a reliable undo method and may reset the entire session instead of restoring a previous turn."},{"question":"Is there a time limit?","answer":"There is no visible turn timer forcing you to place the next block within a few seconds, so you can normally study the grid and play at your own pace. The pressure comes from space rather than a countdown: every block occupies a cell, and the run approaches its end as flexible empty areas disappear. Use the absence of a timer to compare several placements before choosing one. Check whether a move creates a merge now, prepares a higher-value match, blocks a corner, or separates two promising groups. On mobile, you can also take a moment to confirm the intended square before tapping. The embedded provider controls session behavior, so leaving the browser tab inactive for a long period or reloading the page may not preserve the current run. For a normal active session, however, thoughtful planning is more important than speed."}],"ctaKicker":"One more run?","ctaTitle":"Ready to build a bigger city?","ctaBody":"Use the ideas above, protect your open spaces, and beat your best score with a smarter next move.","ctaButton":"Play again","relatedTitle":"More Merge Games","related":{"mergeBlocksOnline":"Merge Blocks Online","mergeNumberPuzzle":"Merge Number Puzzle","mergeNumbersGame":"Merge Numbers Game","mergeBlocksFree":"Merge Blocks Free","mergeNumberGame":"Merge Number Game","mergeBlocks2048":"Merge Blocks 2048"}},"zh-CN":{"languageLabel":"语言","logoLabel":"合并方块游戏首页","searchLabel":"搜索游戏","searchPlaceholder":"搜索合并游戏……","searchResults":"找到 {count} 个游戏","searchNoResults":"没有匹配的游戏，请尝试其他名称或关键词。","playNow":"立即游玩","advertisement":"广告","play":"开始游戏","fullscreen":"全屏","fullscreenError":"无法进入全屏模式，你仍可在当前页面继续游戏。","gameFrameTitle":"合并方块游戏","about":"关于我们","privacy":"隐私政策","terms":"服务条款","copyright":"合并方块游戏。保留所有权利。","meta":{"title":"合并方块游戏 - 免费在线游玩 Merge Blocks","description":"免费在线玩合并方块游戏！合并相同数字方块、建设你的城市并挑战最高分。无需下载，打开浏览器即可开始。","schemaDescription":"免费在线玩合并方块游戏，合并相同数字方块并建设你的城市。"},"heading":"合并方块游戏","tagline":"合并相同方块，规划每一步，打造属于你的城市。","introKicker":"建造 · 合并 · 成长","introTitle":"游戏介绍","introParagraphs":["合并方块游戏把简单的落子益智玩法变成一座不断成长的城市。每回合都会出现一个带数字的方块，你需要把它放入棋盘上的空格。当三个或更多数字相同的方块彼此相连时，它们会合成为更大的建筑。规则很容易理解，但每个落点都会影响几步之后还能形成哪些连接。","你的目标是在制造更高等级合并的同时保持棋盘畅通。空白空间和分数同样重要：分散的数字可能切断有用的组合，而经过规划的方块群既能腾出空间，也能为下一次升级做好准备。当棋盘没有可用空间时本局结束，因此每次放置既带来即时反馈，也是对城市未来形态的一次选择。","成功合并会增加分数，每达到 1,000 分便可获得一个拆除点，用来移除妨碍布局的方块。真正出现瓶颈时再使用这项能力通常更有价值。游戏没有一个需要盲目追逐的统一世界纪录，你可以通过个人最佳分数、建筑等级以及保持灵活棋盘的时间衡量自己的进步。","这款游戏让人愿意继续挑战，是因为每个回合都短小、直观而且有意义。一次普通合并可能完成升级、打开被堵住的路线，或为更大的连锁创造条件。眼前总有一个诱人的即时选择，同时也可能存在更强的耐心布局，让下一局成为建造更整洁、更聪明城市的新机会。"],"valueListLabel":"游戏亮点","values":{"merge":"三个即可合并","build":"建造城市","score":"挑战最高分"},"howKicker":"认真走好四步","howTitle":"玩法说明","stepTitles":["放置","连接","管理","拆除"],"stepDescriptions":["先查看下一个数字方块，再点击空格完成放置。中央位置拥有更多相邻方向，边缘和角落适合整理方块，但可供调整的路线更少。确认前先扫视整个棋盘，想一想接下来一两个数字可能放在哪里。","把三个或更多数字相同的方块连接起来，它们就会合成为更高等级的方块或建筑。相同方块只要属于同一个相连区域即可，不必排列成笔直的一行。注意升级后的方块会落在哪里，因为这个位置既可能开启下一次合并，也可能挡住重要路线。","把每个空格都当作有限资源，因为棋盘填满且没有有效落点时本局就会结束。小型合并可以释放空间，但把不同数字散落在各处会把棋盘切成难以利用的小块。应在当前可得分数与耐心布局能够创造的空间和连接之间取得平衡。","分数每达到一个新的 1,000 分节点，就能获得一个拆除点并移除阻塞方块。拆除是挽救局面的工具，不是普通操作；刚遇到不方便的方块就使用，可能浪费它更大的策略价值。使用前暂停一下，比较移除哪个方块能够创造最多的后续连接。"],"tipLabel":"提示","stepTips":["在活跃的方块群之间至少留出一条通路，让未来方块能够把它们连接起来，而不是被孤立。","让新生成的高等级方块靠近同等级方块，为第二次合并做准备，不要让连锁就此结束。","保留一块拥有多个相邻空格的灵活区域，为意外出现的数字提供有用落点。","优先移除能够同时打开多条路线或重新连接两个区域的方块，而不是单纯删除最小数字。"],"tagsTitle":"标签","tags":["合并方块","合并游戏","数字益智","方块游戏","2048 益智","在线合并方块","免费合并方块"],"skillsTitle":"能力培养","skills":["策略思考","规划能力","空间推理","数字识别","决策能力"],"skillDescriptions":["比较立即合并的快速收益与保留相连方块、日后形成更强连锁的价值，可以练习策略思考。","不急于填满方便的空格，而是为即将出现的数字和高等级建筑预留位置，可以练习规划能力。","观察相邻格、开放区域、封闭角落和未来能够连接不同方块群的路线，可以练习空间推理。","反复扫描棋盘中的相同数值、升级顺序和只差一个方块即可合并的组合，可以提高数字识别速度。","每次落子都要平衡即时分数、剩余空间、方块被孤立的风险和后续机会，因此能够练习决策能力。"],"faqKicker":"常见问题","faqTitle":"常见问题解答","faq":[{"question":"合并方块游戏可以免费玩吗？","answer":"可以。你可以在受支持的网页浏览器中免费游玩，无需付费、注册账号或下载应用。打开页面，等待嵌入的游戏加载，然后点击“开始游戏”即可。桌面电脑、平板和手机只要使用现代浏览器并保持稳定网络，通常都能体验完整的基础玩法。网站未来配置广告后，可能在游戏之外显示清晰分隔的广告，第三方游戏服务商也可能展示自己的加载提示，但观看广告不等于必须购买。若游戏没有启动，请先确认 JavaScript 和第三方 iframe 内容未被浏览器拦截，并通过 HTTPS 重新加载。正常开始游戏不需要安装来历不明的浏览器扩展，也不需要提供付款信息。"},{"question":"合并方块游戏的最高分是多少？","answer":"目前没有一个适用于所有版本、设备和对局的可验证统一最高分。最终成绩会受到游戏服务商提供的版本、方块出现顺序、棋盘保持畅通的时间以及拆除点使用效率影响，因此本站不会编造世界纪录或承诺固定上限。更有意义的目标是刷新个人最佳成绩：记录一次优秀对局结束时的分数，再通过更好的空间管理和更长的合并连锁尝试提高。高分通常来自保留更多选择，而不是立刻完成眼前每一次合并。让高等级方块靠近相同数值，避免低等级方块被孤立，并把挽救工具留到棋盘拥挤时使用，通常能让一局游戏持续更久并获得更多分数。"},{"question":"怎样获得拆除点？","answer":"当分数达到一个新的 1,000 分节点时，你会获得一个拆除点。它可以移除棋盘上的一个方块，用来腾出空间，或者重新连接被错误落子隔开的区域。拆除点会自动获得，真正需要判断的是何时使用以及删除哪个位置。不要只因为某个低数字看起来不整齐就立即拆除；应查看障碍周围的格子，选择能够打开多个相邻空格、连接两组相同方块或为下一个方块创造安全落点的位置。如果棋盘仍有充足空间，保留拆除点通常比马上使用更有价值。棋盘变得拥挤时，一次精心选择的拆除可能让本局延长到足以完成新的得分连锁，并继续接近下一个 1,000 分节点。"},{"question":"可以撤销一步吗？","answer":"当前版本没有用于撤销已完成落子的标准按钮。方块放下并完成相关合并后，新的棋盘状态就会成为本局的一部分。因此每次落子前短暂停顿非常重要：查看下一个数字、寻找已有组合，并确认落子后还会留下哪些空格。如果操作不理想，也不代表必须立刻结束本局；你可能在后续连接这个孤立方块、围绕它继续建设，或在获得拆除点后将其移除。可以把失误看作新的规划条件，而不是立即重开的理由。嵌入游戏的会话行为由第三方服务商控制，刷新网页不能作为可靠的撤销方法，因为它可能直接重置整局，而不是恢复到上一步。"},{"question":"游戏有时间限制吗？","answer":"游戏没有一个明显的回合倒计时要求你在几秒内放下方块，因此通常可以按照自己的节奏观察棋盘。压力来自空间而不是计时器：每个方块都会占据一个格子，灵活的空白区域越少，本局就越接近结束。可以利用不计时的特点，在落子前比较几个位置，判断它是否能立即合并、准备更高等级组合、封住角落或分隔两组有潜力的方块。在手机上也可以先确认目标格再点击。会话保存由嵌入游戏的服务商控制，长时间离开标签页或刷新页面不一定能保留当前对局；但在正常游玩过程中，认真规划通常比快速操作更重要。"}],"ctaKicker":"再来一局？","ctaTitle":"准备建造一座更大的城市吗？","ctaBody":"运用上面的策略，保护空白空间，用更聪明的下一步刷新个人最高分。","ctaButton":"再玩一局","relatedTitle":"更多合并游戏","related":{"mergeBlocksOnline":"在线合并方块","mergeNumberPuzzle":"合并数字益智","mergeNumbersGame":"合并数字游戏","mergeBlocksFree":"免费合并方块","mergeNumberGame":"数字合并游戏","mergeBlocks2048":"合并方块 2048"}},"es":{"languageLabel":"Idioma","logoLabel":"Inicio de Merge Blocks Game","searchLabel":"Buscar juegos","searchPlaceholder":"Buscar juegos de combinar...","searchResults":"Se encontraron {count} juegos","searchNoResults":"Ningún juego coincide. Prueba otro título o palabra clave.","playNow":"Jugar ahora","advertisement":"Publicidad","play":"Jugar","fullscreen":"Pantalla completa","fullscreenError":"La pantalla completa no está disponible. Puedes seguir jugando aquí.","gameFrameTitle":"Juego Merge Blocks","about":"Acerca de","privacy":"Política de privacidad","terms":"Términos del servicio","copyright":"Merge Blocks Game. Todos los derechos reservados.","meta":{"title":"Merge Blocks Game - Juega gratis en línea","description":"Juega gratis a Merge Blocks Game en línea. Combina bloques numéricos iguales, construye tu ciudad y supera tu récord sin descargar nada.","schemaDescription":"Juega gratis a Merge Blocks Game, combina bloques numéricos iguales y construye tu ciudad."},"heading":"Juego Merge Blocks","tagline":"Combina bloques, planea cada movimiento y haz crecer tu ciudad.","introKicker":"Construye. Combina. Crece.","introTitle":"Acerca de Merge Blocks Game","introParagraphs":["Merge Blocks Game convierte un sencillo rompecabezas de colocación en una ciudad que crece. En cada turno recibes un bloque numerado y eliges una casilla vacía. Cuando tres o más bloques del mismo valor se tocan, se combinan para formar un edificio mayor. La transformación es fácil de entender, pero cada posición cambia las conexiones que seguirán disponibles varios turnos después.","El objetivo es mantener abierto el tablero mientras creas combinaciones cada vez más valiosas. El espacio libre importa tanto como la puntuación: los números dispersos pueden separar grupos útiles, mientras que un conjunto bien planeado libera casillas y prepara la siguiente mejora. La partida termina cuando ya no queda espacio práctico, así que cada colocación es una recompensa y una decisión sobre el futuro de la ciudad.","Las combinaciones suman puntos y, al alcanzar 1.000 puntos, consigues un punto de demolición para retirar un bloque problemático. Esta herramienta resulta más potente si se reserva para un verdadero atasco. En lugar de perseguir un récord universal, puedes medir tu progreso con tu mejor puntuación, el nivel de tus edificios y el tiempo que mantienes flexible el tablero.","El juego invita a repetir porque cada turno es breve, visible e importante. Una combinación modesta puede mejorar un edificio, abrir una ruta bloqueada o preparar una cadena mayor. Siempre hay un movimiento inmediato tentador y otro más paciente que quizá sea mejor, de modo que cada nueva partida ofrece la oportunidad de construir una ciudad más ordenada e inteligente."],"valueListLabel":"Aspectos destacados del juego","values":{"merge":"Combina 3 o más","build":"Construye una ciudad","score":"Supera tu récord"},"howKicker":"Cuatro movimientos pensados","howTitle":"Cómo jugar","stepTitles":["Coloca","Conecta","Gestiona","Demuele"],"stepDescriptions":["Mira el siguiente bloque numerado y toca o haz clic en una casilla vacía para colocarlo. El centro ofrece más vecinos posibles, mientras que un borde o una esquina puede ordenar un grupo, pero deja menos rutas de salida. Antes de confirmar, revisa todo el tablero e imagina dónde podrían encajar los próximos valores.","Conecta tres o más bloques con el mismo número para convertirlos en un bloque o edificio de nivel superior. Solo necesitan pertenecer al mismo grupo conectado; no tienen que formar una línea recta perfecta. Observa dónde quedará la pieza mejorada, porque puede iniciar otra combinación o interrumpir una ruta útil.","Considera cada casilla vacía como un recurso limitado: la partida termina cuando la cuadrícula se llena y no queda una colocación útil. Las combinaciones pequeñas crean espacio, pero repartir valores distintos divide el tablero en zonas incómodas. Equilibra los puntos disponibles ahora con el espacio y las conexiones que puede producir una preparación paciente.","Cada nuevo hito de 1.000 puntos concede un punto de demolición para quitar un bloque que limita el tablero. Es una herramienta de recuperación y no un movimiento rutinario; gastarla ante el primer inconveniente puede desperdiciar su valor estratégico. Antes de usarla, compara qué eliminación permitirá más conexiones futuras."],"tipLabel":"Consejo","stepTips":["Conserva una ruta abierta entre los grupos activos para que un bloque futuro pueda unirlos en lugar de quedar aislado.","Procura que el bloque mejorado quede cerca de otro con el mismo valor y prepare una segunda combinación.","Mantén una zona flexible con varias casillas vecinas libres para colocar de forma útil un número inesperado.","Retira el bloque que abra varias rutas o reúna grupos separados, no simplemente el que tenga el número más bajo."],"tagsTitle":"Etiquetas","tags":["combinar bloques","juego de combinar","rompecabezas numérico","juego de bloques","2048","combinar bloques en línea","combinar bloques gratis"],"skillsTitle":"Habilidades que practicas","skills":["Estrategia","Planificación","Razonamiento espacial","Reconocimiento numérico","Toma de decisiones"],"skillDescriptions":["La estrategia se practica al comparar la recompensa rápida de una combinación inmediata con el valor de guardar bloques conectados para una cadena mejor.","La planificación mejora cuando reservas espacios útiles para próximos números y edificios avanzados en vez de ocupar enseguida cada casilla cómoda.","El razonamiento espacial se ejercita al leer celdas vecinas, zonas abiertas, esquinas bloqueadas y rutas que podrán unir grupos iguales.","El reconocimiento numérico gana rapidez al buscar valores iguales, secuencias de mejora y grupos que solo necesitan una pieza más.","La toma de decisiones se practica porque cada posición obliga a equilibrar puntos inmediatos, espacio, riesgo de aislamiento y oportunidades futuras."],"faqKicker":"Respuestas rápidas","faqTitle":"Preguntas frecuentes","faq":[{"question":"¿Merge Blocks Game es gratuito?","answer":"Sí. Puedes jugar gratis en un navegador compatible sin pagar, crear una cuenta ni descargar una aplicación. Abre la página, espera a que cargue el juego integrado y pulsa Jugar. La experiencia básica funciona en ordenador, tableta y móvil con un navegador moderno y una conexión estable. Cuando se configure publicidad, el sitio podría mostrar anuncios claramente separados y el proveedor externo puede presentar sus propios mensajes de carga, pero un anuncio no supone una compra obligatoria. Si no se inicia, comprueba que JavaScript y los iframes de terceros estén permitidos y vuelve a cargar la página mediante HTTPS. Nunca debería ser necesario instalar una extensión desconocida ni facilitar datos de pago para comenzar una sesión normal."},{"question":"¿Cuál es la puntuación más alta de Merge Blocks Game?","answer":"No existe un récord máximo universal verificado que sirva para todas las versiones, dispositivos y partidas. El resultado depende de la versión del proveedor, del orden de los bloques, del tiempo que el tablero permanezca abierto y del uso eficiente de las demoliciones. Por eso no mostramos un récord mundial inventado ni prometemos un límite fijo. La referencia más útil es tu mejor resultado personal: guarda la puntuación de una buena partida e intenta superarla con mejor gestión del espacio y cadenas más largas. Las puntuaciones altas suelen llegar al conservar opciones, no al aceptar inmediatamente cada combinación. Mantener juntos los bloques avanzados compatibles, evitar números bajos aislados y reservar herramientas para un tablero lleno favorece partidas más largas y productivas."},{"question":"¿Cómo consigo un punto de demolición?","answer":"Recibes un punto de demolición al alcanzar un nuevo hito de 1.000 puntos. Permite retirar un bloque para recuperar espacio o volver a conectar áreas separadas por una mala colocación. La obtención es automática; la decisión importante es cuándo y dónde gastarlo. No elimines un número bajo solo porque parece desordenado. Examina las celdas que rodean cada obstáculo y elige una retirada que abra varios espacios, una dos grupos iguales o cree un lugar seguro para la próxima pieza. Si todavía hay suficiente espacio, guardar el punto suele ser mejor que usarlo enseguida. Con una cuadrícula llena, una demolición bien elegida puede prolongar la partida, producir otra cadena de puntos y acercarte al siguiente hito."},{"question":"¿Puedo deshacer un movimiento?","answer":"La versión actual no ofrece un botón normal para deshacer una colocación completada. Cuando el bloque se coloca y termina cualquier combinación, el nuevo estado pasa a formar parte de la partida. Por eso conviene detenerse antes de cada movimiento: mira el próximo valor, busca grupos existentes y comprueba qué espacios quedarán. Un movimiento incómodo no significa que todo esté perdido; quizá puedas conectar después ese bloque, construir a su alrededor o retirarlo al conseguir una demolición. Trata los errores como nuevas restricciones de planificación. El proveedor controla la sesión del juego integrado, de modo que actualizar la página no es un método fiable para deshacer y podría reiniciar toda la partida en vez de recuperar el turno anterior."},{"question":"¿Hay un límite de tiempo?","answer":"No hay un cronómetro visible que obligue a colocar el bloque en pocos segundos, por lo que normalmente puedes estudiar la cuadrícula a tu ritmo. La presión procede del espacio: cada pieza ocupa una celda y la partida se acerca al final cuando desaparecen las zonas vacías flexibles. Aprovecha la ausencia de reloj para comparar varias posiciones. Comprueba si una jugada combina ahora, prepara un valor superior, bloquea una esquina o separa grupos prometedores. En móvil también puedes confirmar la casilla antes de tocarla. El proveedor controla la conservación de la sesión, así que abandonar la pestaña durante mucho tiempo o recargar podría no mantener la partida; durante una sesión activa, pensar bien importa más que jugar rápido."}],"ctaKicker":"¿Otra partida?","ctaTitle":"¿Listo para construir una ciudad más grande?","ctaBody":"Aplica estas ideas, protege el espacio libre y supera tu récord con una decisión más inteligente.","ctaButton":"Jugar de nuevo","relatedTitle":"Más juegos de combinar","related":{"mergeBlocksOnline":"Merge Blocks Online","mergeNumberPuzzle":"Rompecabezas de números","mergeNumbersGame":"Juego de combinar números","mergeBlocksFree":"Merge Blocks gratis","mergeNumberGame":"Juego de números","mergeBlocks2048":"Merge Blocks 2048"}},"pt-BR":{"languageLabel":"Idioma","logoLabel":"Início do Merge Blocks Game","searchLabel":"Buscar jogos","searchPlaceholder":"Buscar jogos de combinar...","searchResults":"{count} jogos encontrados","searchNoResults":"Nenhum jogo corresponde à busca. Tente outro nome ou termo.","playNow":"Jogar agora","advertisement":"Publicidade","play":"Jogar","fullscreen":"Tela cheia","fullscreenError":"A tela cheia não está disponível. Você pode continuar jogando aqui.","gameFrameTitle":"Jogo Merge Blocks","about":"Sobre","privacy":"Política de Privacidade","terms":"Termos de Serviço","copyright":"Merge Blocks Game. Todos os direitos reservados.","meta":{"title":"Merge Blocks Game - Jogue grátis online","description":"Jogue Merge Blocks Game grátis online! Una blocos numéricos iguais, construa sua cidade e supere seu recorde sem precisar baixar nada.","schemaDescription":"Jogue Merge Blocks Game grátis, una blocos numéricos iguais e construa sua cidade."},"heading":"Jogo Merge Blocks","tagline":"Una blocos iguais, planeje cada jogada e desenvolva sua cidade.","introKicker":"Construa. Una. Cresça.","introTitle":"Sobre Merge Blocks Game","introParagraphs":["Merge Blocks Game transforma um quebra-cabeça simples de posicionamento em uma cidade que cresce. A cada rodada você recebe um bloco numerado e escolhe uma casa vazia. Quando três ou mais blocos de mesmo valor se tocam, eles se unem em uma construção maior. A transformação é fácil de entender, mas cada posição altera quais conexões continuarão possíveis nas próximas rodadas.","Seu objetivo é manter o tabuleiro aberto enquanto cria combinações cada vez mais valiosas. Espaço livre importa tanto quanto pontuação: números espalhados podem separar grupos úteis, enquanto um conjunto planejado libera casas e prepara a próxima evolução. A partida termina quando não resta espaço prático, então cada posição é uma pequena recompensa e uma decisão sobre o futuro da cidade.","Combinações bem-sucedidas somam pontos, e chegar a 1.000 pontos concede um ponto de demolição para remover um bloco problemático. Essa ferramenta é mais forte quando guardada para um bloqueio real. Em vez de perseguir um recorde universal, acompanhe seu melhor resultado, o nível das construções e o tempo durante o qual consegue manter o tabuleiro flexível.","O jogo continua interessante porque cada rodada é curta, visível e importante. Uma união modesta pode melhorar uma construção, abrir um caminho ou preparar uma corrente maior. Sempre existe uma jogada imediata tentadora e outra mais paciente que pode ser mais forte, fazendo cada nova partida parecer uma chance de criar uma cidade mais organizada e inteligente."],"valueListLabel":"Destaques do jogo","values":{"merge":"Una 3 ou mais","build":"Construa uma cidade","score":"Supere seu recorde"},"howKicker":"Quatro jogadas pensadas","howTitle":"Como jogar","stepTitles":["Posicione","Conecte","Organize","Demolir"],"stepDescriptions":["Observe o próximo bloco numerado e toque ou clique em uma casa vazia para posicioná-lo. O centro oferece mais vizinhos possíveis; bordas e cantos ajudam a organizar grupos, mas deixam menos rotas de saída. Antes de confirmar, examine toda a grade e imagine onde os próximos valores poderiam entrar.","Conecte três ou mais blocos com o mesmo número para transformá-los em um bloco ou prédio de nível superior. Eles só precisam fazer parte do mesmo grupo conectado e não precisam formar uma linha reta perfeita. Observe onde o bloco evoluído ficará, pois ele pode iniciar outra união ou interromper um caminho útil.","Trate cada casa vazia como recurso limitado, porque a partida termina quando a grade fica cheia e não existe posição útil. Pequenas uniões abrem espaço, mas espalhar valores diferentes divide o tabuleiro em bolsões difíceis. Equilibre os pontos disponíveis agora com o espaço e as conexões que uma preparação paciente pode gerar depois.","A cada novo marco de 1.000 pontos, você ganha um ponto de demolição para retirar um bloco que limita a grade. Demolir é uma ferramenta de recuperação, não uma jogada rotineira; usá-la no primeiro incômodo pode desperdiçar seu valor. Antes de gastar, compare qual remoção cria mais conexões futuras."],"tipLabel":"Dica","stepTips":["Mantenha uma rota aberta entre grupos ativos para que um bloco futuro consiga uni-los em vez de ficar isolado.","Tente deixar o novo bloco avançado perto de outro do mesmo valor, preparando uma segunda combinação.","Reserve uma área flexível com várias casas vizinhas livres para acomodar números inesperados.","Remova o bloco que abra vários caminhos ou reúna grupos separados, não apenas aquele com menor número."],"tagsTitle":"Tags","tags":["unir blocos","jogo de combinar","quebra-cabeça numérico","jogo de blocos","2048","merge blocks online","merge blocks grátis"],"skillsTitle":"Habilidades praticadas","skills":["Estratégia","Planejamento","Raciocínio espacial","Reconhecimento numérico","Tomada de decisão"],"skillDescriptions":["A estratégia é praticada ao comparar a recompensa rápida de uma união imediata com o valor de guardar blocos conectados para uma corrente melhor.","O planejamento melhora quando você reserva espaços úteis para números futuros e construções avançadas em vez de ocupar toda casa conveniente.","O raciocínio espacial é exercitado ao observar células vizinhas, regiões abertas, cantos bloqueados e caminhos que podem conectar grupos iguais.","O reconhecimento numérico fica mais rápido ao procurar valores iguais, sequências de evolução e grupos que precisam de apenas mais um bloco.","A tomada de decisão é praticada porque cada posição exige equilibrar pontuação imediata, espaço, risco de isolamento e oportunidades futuras."],"faqKicker":"Respostas rápidas","faqTitle":"Perguntas frequentes","faq":[{"question":"Merge Blocks Game é grátis?","answer":"Sim. Você pode jogar gratuitamente em um navegador compatível sem pagar, criar conta ou baixar aplicativo. Abra a página, aguarde o jogo incorporado carregar e pressione Jogar. A experiência básica funciona em computador, tablet e celular com navegador moderno e conexão estável. Quando a publicidade for configurada, o site poderá mostrar anúncios claramente separados, e o provedor externo poderá apresentar mensagens próprias de carregamento, mas um anúncio não representa uma compra obrigatória. Se o jogo não iniciar, confirme que JavaScript e iframes de terceiros estão permitidos e recarregue usando HTTPS. Você nunca deve precisar instalar uma extensão desconhecida nem informar dados de pagamento apenas para começar uma sessão normal."},{"question":"Qual é a maior pontuação em Merge Blocks Game?","answer":"Não existe uma maior pontuação universal verificada que se aplique a todas as versões, dispositivos e partidas. O resultado depende da versão fornecida, da sequência de blocos, do tempo em que a grade permanece aberta e do uso eficiente das demolições. Por isso, não apresentamos um recorde mundial inventado nem prometemos um limite fixo. O melhor objetivo é seu próprio recorde: anote a pontuação de uma boa partida e tente superá-la com melhor gestão do espaço e correntes maiores. Pontuações altas geralmente vêm de preservar opções, não de aceitar imediatamente toda combinação. Manter blocos avançados perto de valores compatíveis, evitar números baixos isolados e guardar ferramentas para uma grade cheia favorece sessões mais longas e produtivas."},{"question":"Como consigo um ponto de demolição?","answer":"Você recebe um ponto de demolição ao alcançar um novo marco de 1.000 pontos. Ele permite retirar um bloco para recuperar espaço ou reconectar áreas separadas por uma posição ruim. O ponto é concedido automaticamente; a decisão estratégica é quando e onde gastá-lo. Não remova um número baixo só porque parece desorganizado. Examine as casas ao redor dos obstáculos e escolha uma remoção que abra vários espaços, una dois grupos iguais ou crie um local seguro para a próxima peça. Se a grade ainda estiver confortável, guardar o ponto costuma ser melhor do que usá-lo imediatamente. Quando o tabuleiro fica cheio, uma demolição bem escolhida pode prolongar a partida, criar outra corrente de pontos e aproximar você do próximo marco."},{"question":"Posso desfazer uma jogada?","answer":"A versão atual não oferece um botão padrão para desfazer uma posição concluída. Depois que o bloco é colocado e as combinações terminam, o novo estado passa a fazer parte da partida. Por isso, pare um instante antes de jogar: observe o próximo valor, procure grupos existentes e confira quais espaços restarão. Uma jogada inconveniente não significa que tudo acabou; talvez seja possível conectar o bloco depois, construir ao redor dele ou removê-lo quando ganhar uma demolição. Trate erros como novas restrições de planejamento. O provedor controla a sessão do jogo incorporado, então atualizar a página não é um método confiável de desfazer e pode reiniciar toda a partida em vez de restaurar a rodada anterior."},{"question":"Existe limite de tempo?","answer":"Não há um cronômetro visível obrigando você a posicionar o próximo bloco em poucos segundos, então normalmente é possível estudar a grade no seu ritmo. A pressão vem do espaço: cada peça ocupa uma casa, e a partida se aproxima do fim quando áreas vazias flexíveis desaparecem. Aproveite a ausência de relógio para comparar posições. Veja se a jogada combina agora, prepara um valor superior, bloqueia um canto ou separa grupos promissores. No celular, confirme a casa antes de tocar. O provedor controla a preservação da sessão, portanto sair da aba por muito tempo ou atualizar pode não manter a partida; durante uma sessão ativa, planejar bem importa mais do que jogar depressa."}],"ctaKicker":"Mais uma partida?","ctaTitle":"Pronto para construir uma cidade maior?","ctaBody":"Use essas ideias, proteja os espaços livres e supere seu recorde com uma próxima jogada mais inteligente.","ctaButton":"Jogar novamente","relatedTitle":"Mais jogos de combinar","related":{"mergeBlocksOnline":"Merge Blocks Online","mergeNumberPuzzle":"Quebra-cabeça de números","mergeNumbersGame":"Jogo de combinar números","mergeBlocksFree":"Merge Blocks grátis","mergeNumberGame":"Jogo de números","mergeBlocks2048":"Merge Blocks 2048"}},"ja":{"languageLabel":"言語","logoLabel":"マージブロックゲームのホーム","searchLabel":"ゲームを検索","searchPlaceholder":"マージゲームを検索…","searchResults":"{count}件のゲームが見つかりました","searchNoResults":"一致するゲームがありません。別の名前やキーワードをお試しください。","playNow":"今すぐ遊ぶ","advertisement":"広告","play":"ゲームを始める","fullscreen":"全画面表示","fullscreenError":"全画面表示を利用できません。このページで引き続きプレイできます。","gameFrameTitle":"マージブロックゲーム","about":"このサイトについて","privacy":"プライバシーポリシー","terms":"利用規約","copyright":"Merge Blocks Game. All rights reserved.","meta":{"title":"Merge Blocks Game - 無料オンラインゲーム","description":"Merge Blocks Gameを無料でプレイ。同じ数字のブロックをつなげて街を育て、ハイスコアを目指しましょう。ダウンロード不要です。","schemaDescription":"Merge Blocks Gameを無料でプレイし、同じ数字のブロックをまとめて街を育てましょう。"},"heading":"マージブロックゲーム","tagline":"同じブロックをまとめ、一手ずつ考えて街を育てよう。","introKicker":"建てる・まとめる・育てる","introTitle":"ゲーム紹介","introParagraphs":["Merge Blocks Gameは、シンプルな配置パズルを成長する街づくりに変えたゲームです。各ターンに数字付きブロックが現れ、盤面の空いているマスを選んで置きます。同じ数字のブロックが3つ以上つながると、より大きな建物へまとまります。ルールはすぐ理解できますが、選んだ場所によって数手先に残るつながり方が変わります。","目標は、価値の高いマージを作りながら盤面の空きを保つことです。空きマスはスコアと同じくらい大切です。数字が散らばると有用なグループが分断されますが、計画したまとまりは空間を生み、次のアップグレードを準備します。置ける場所がなくなるとゲーム終了なので、一手ごとに街の将来を考える必要があります。","マージに成功すると得点が増え、1,000点に達するごとに邪魔なブロックを消せる解体ポイントを獲得します。本当に行き詰まった場面まで残すと、この道具の価値を最大限に使えます。確認できない世界記録を追うのではなく、自己ベスト、建物のレベル、柔軟な盤面を維持できた長さで上達を確かめましょう。","毎ターンが短く、変化が見え、選択に意味があることが繰り返し遊びたくなる理由です。小さなマージがアップグレードや通路の解放、大きな連鎖の準備につながります。目の前の魅力的な一手と、待つことで強くなる一手が常にあり、新しいゲームはより整った賢い街を作る機会になります。"],"valueListLabel":"ゲームのポイント","values":{"merge":"3つ以上でマージ","build":"街をつくる","score":"ベストスコア更新"},"howKicker":"考える4ステップ","howTitle":"遊び方","stepTitles":["置く","つなぐ","整える","消す"],"stepDescriptions":["次に出る数字ブロックを確認し、空いているマスをタップまたはクリックして置きます。中央は隣接できる方向が多く、端や角はグループを整えやすい一方で逃げ道が少なくなります。確定前に盤面全体を見て、次の一つか二つの数字を置く場所も想像しましょう。","同じ数字のブロックを3つ以上つなげると、より高いレベルのブロックや建物にまとまります。同じ連結グループに入っていればよく、完全な直線である必要はありません。完成したブロックの位置が次のマージを始めるか、必要な通路をふさぐかも確認しましょう。","空きマスは限られた資源です。盤面が埋まり、有効な置き場所がなくなるとゲームが終了します。小さなマージは空間を作りますが、異なる数字を広く置くと盤面が使いにくい小区画に分かれます。今の得点と、待つことで将来生まれる空間や接続を比べてください。","スコアが新たな1,000点の節目に達するたび、盤面を制限しているブロックを一つ消せる解体ポイントを得ます。解体は通常の手ではなく立て直しの道具なので、最初の不都合ですぐ使うと戦略的価値を失います。使う前に、どのブロックを消せば将来の接続が最も増えるか比較しましょう。"],"tipLabel":"ヒント","stepTips":["活動中のグループ間に通路を一つ残し、将来のブロックが孤立せず両方をつなげられるようにしましょう。","新しい高レベルブロックを同じ値の近くに作り、連鎖を終わらせず次のマージを準備しましょう。","隣接する空きマスが複数ある柔軟な区域を残すと、予想外の数字にも有用な置き場所ができます。","最小の数字ではなく、複数の通路を開く、または分かれたグループを再接続するブロックを消しましょう。"],"tagsTitle":"タグ","tags":["マージブロック","マージゲーム","数字パズル","ブロックゲーム","2048パズル","オンラインマージブロック","無料マージブロック"],"skillsTitle":"身につくスキル","skills":["戦略","計画力","空間認識","数字認識","意思決定"],"skillDescriptions":["今すぐマージする報酬と、つながったブロックを残して後で大きな連鎖を作る価値を比べることで戦略を練習します。","便利なマスをすぐ埋めず、今後の数字や高レベル建物のために場所を残すことで計画力を磨きます。","隣接マス、空いた区域、ふさがれた角、別々の同数グループを結ぶ将来の経路を読むことで空間認識を練習します。","同じ値、アップグレードの順序、あと一つでマージできるグループを繰り返し探すことで数字認識が速くなります。","各配置で即時得点、残り空間、孤立の危険、将来の機会を比べる必要があるため意思決定を練習できます。"],"faqKicker":"すぐ分かる回答","faqTitle":"よくある質問","faq":[{"question":"Merge Blocks Gameは無料ですか？","answer":"はい。対応するウェブブラウザがあれば、支払い、アカウント作成、アプリのダウンロードなしで無料で遊べます。ページを開き、埋め込みゲームの読み込みを待ってからプレイを押してください。最新のブラウザと安定した通信環境があれば、パソコン、タブレット、スマートフォンで基本ゲームを利用できます。広告が設定された場合はゲームと明確に分けて表示されることがあり、外部のゲーム提供元が読み込み案内を出す場合もありますが、広告は購入の必須条件ではありません。起動しないときはJavaScriptと外部iframeが許可されているか確認し、HTTPSで再読み込みしてください。通常の開始に不明な拡張機能や支払い情報は必要ありません。"},{"question":"Merge Blocks Gameの最高スコアはいくつですか？","answer":"すべてのバージョン、端末、プレイに共通する検証済みの最高スコアはありません。得点は提供元のバージョン、出現するブロックの順序、盤面を空けて保てる時間、解体ポイントの使い方に左右されます。そのため、このサイトは根拠のない世界記録や固定上限を掲載しません。最も役立つ目標は自己ベストです。良いプレイの終了時に得点を記録し、空間管理と長い連鎖を改善して更新を目指しましょう。高得点は、すべてのマージをすぐ行うより選択肢を残すことで生まれます。高レベルブロックを同じ値の近くに保ち、低い数字の孤立を避け、盤面が混んだときまで回復手段を残すことが長いプレイにつながります。"},{"question":"解体ポイントはどうすれば手に入りますか？","answer":"スコアが新しい1,000点の節目に達すると解体ポイントを一つ受け取ります。盤面からブロックを一つ取り除き、空間を戻したり、悪い配置で分断された区域をつなぎ直したりできます。獲得は自動で、重要なのは使う時期と場所です。低い数字が乱れて見えるだけで消さず、障害の周囲を確認してください。複数の空きマスを開く、同じ数字のグループを結ぶ、次のブロックに安全な場所を作る除去が有効です。まだ余裕があるならすぐ使わず残す方が強いことがあります。混雑時の適切な解体はプレイを延ばし、新たな得点連鎖と次の1,000点への道を作ります。"},{"question":"一手を元に戻せますか？","answer":"現在のバージョンには、確定した配置を戻す標準の取り消しボタンがありません。ブロックを置いてマージが完了すると、その盤面がプレイの一部になります。そのため一手前の短い確認が大切です。次の数字、既存グループ、配置後に残る空きマスを見てください。置き方が不便でも必ず失敗ではありません。後で孤立ブロックをつなぐ、周囲を組み立てる、解体ポイントを得て消す方法があります。ミスをすぐ再開する理由ではなく、新しい計画条件として扱いましょう。埋め込みゲームのセッションは提供元が管理するため、ページ更新は信頼できる取り消し方法ではなく、前の手ではなくゲーム全体をリセットする可能性があります。"},{"question":"時間制限はありますか？","answer":"次のブロックを数秒以内に置くよう求める目立ったターンタイマーはないため、通常は自分のペースで盤面を確認できます。プレッシャーは時間ではなく空間から生まれます。ブロックが一マスずつ占め、柔軟な空き区域がなくなるほど終了に近づきます。タイマーがない利点を使い、複数の配置を比較してください。今マージするか、高い値を準備するか、角をふさぐか、有望なグループを分けるかを確認します。モバイルでもタップ前に対象のマスを確かめられます。セッション保持は提供元が管理するため、長時間離れたり再読み込みしたりすると現在のゲームが残らない場合がありますが、通常のプレイでは速さより計画が重要です。"}],"ctaKicker":"もう一度？","ctaTitle":"もっと大きな街をつくりませんか？","ctaBody":"上の考え方を使い、空きマスを守り、より賢い一手で自己ベストを更新しましょう。","ctaButton":"もう一度遊ぶ","relatedTitle":"その他のマージゲーム","related":{"mergeBlocksOnline":"オンライン・マージブロック","mergeNumberPuzzle":"数字マージパズル","mergeNumbersGame":"数字マージゲーム","mergeBlocksFree":"無料マージブロック","mergeNumberGame":"数字マージゲーム","mergeBlocks2048":"マージブロック2048"}}}</script>
+    <script>
+(function () {
+  'use strict';
+
+  window.MergeBlocksStorage = {
+    get: function (key) {
+      try { return window.localStorage.getItem(key); } catch (error) { return null; }
+    },
+    set: function (key, value) {
+      try { window.localStorage.setItem(key, value); return true; } catch (error) { return false; }
+    }
+  };
+}());
+
+(function () {
+  'use strict';
+
+  window.MergeBlocksLocaleConfig = {
+    defaultLocale: 'en',
+    supportedLocales: ['en', 'zh-CN', 'es', 'pt-BR', 'ja'],
+    storageKey: 'mergeblocks.locale'
+  };
+}());
+
+(function () {
+  'use strict';
+
+  function normalize(locale) {
+    return String(locale || '').replace('_', '-').toLowerCase();
+  }
+
+  function matchLocale(candidate, supportedLocales) {
+    var normalized = normalize(candidate);
+    var exact = supportedLocales.find(function (locale) { return normalize(locale) === normalized; });
+    if (exact) return exact;
+
+    var language = normalized.split('-')[0];
+    return supportedLocales.find(function (locale) {
+      return normalize(locale).split('-')[0] === language;
+    }) || null;
+  }
+
+  function detectLocale(savedLocale, browserLocales, supportedLocales, fallbackLocale) {
+    var saved = matchLocale(savedLocale, supportedLocales);
+    if (saved) return saved;
+
+    for (var index = 0; index < browserLocales.length; index += 1) {
+      var detected = matchLocale(browserLocales[index], supportedLocales);
+      if (detected) return detected;
+    }
+    return fallbackLocale;
+  }
+
+  window.MergeBlocksLocaleDetector = { matchLocale: matchLocale, detectLocale: detectLocale };
+}());
+
+(function () {
+  'use strict';
+
+  var config = window.MergeBlocksLocaleConfig;
+  var translations = JSON.parse(document.getElementById('translations-data').textContent);
+  var currentLocale = config.defaultLocale;
+
+  function getPath(source, path) {
+    return path.split('.').reduce(function (value, key) {
+      return value === undefined || value === null ? undefined : value[key];
+    }, source);
+  }
+
+  function translate(path, locale) {
+    var value = getPath(translations[locale || currentLocale], path);
+    if (value === undefined) value = getPath(translations[config.defaultLocale], path);
+    return value === undefined ? path : value;
+  }
+
+  function interpolate(value, parameters) {
+    return String(value).replace(/\{([a-zA-Z0-9_]+)\}/g, function (match, key) {
+      return parameters && parameters[key] !== undefined ? parameters[key] : match;
+    });
+  }
+
+  function updateSchema(locale) {
+    var schemaElement = document.getElementById('game-schema');
+    try {
+      var schema = JSON.parse(schemaElement.textContent);
+      schema.name = translate('heading', locale);
+      schema.description = translate('meta.schemaDescription', locale);
+      schema.inLanguage = locale;
+      schemaElement.textContent = JSON.stringify(schema).replace(/</g, '\\u003c');
+    } catch (error) {
+      console.warn('Unable to update VideoGame structured data.', error);
+    }
+  }
+
+  function applyLocale(locale, persist) {
+    if (!config.supportedLocales.includes(locale)) locale = config.defaultLocale;
+    currentLocale = locale;
+    document.documentElement.lang = locale;
+    document.title = translate('meta.title', locale);
+    document.querySelector('meta[name="description"]').content = translate('meta.description', locale);
+
+    document.querySelectorAll('[data-i18n]').forEach(function (element) {
+      element.textContent = translate(element.dataset.i18n, locale);
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function (element) {
+      element.setAttribute('aria-label', translate(element.dataset.i18nAria, locale));
+    });
+    document.querySelectorAll('[data-i18n-title]').forEach(function (element) {
+      element.title = translate(element.dataset.i18nTitle, locale);
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function (element) {
+      element.placeholder = translate(element.dataset.i18nPlaceholder, locale);
+    });
+    document.querySelectorAll('[data-i18n-alt]').forEach(function (element) {
+      element.alt = translate(element.dataset.i18nAlt, locale);
+    });
+
+    var selector = document.getElementById('language-select');
+    if (selector) selector.value = locale;
+    updateSchema(locale);
+    if (persist) window.MergeBlocksStorage.set(config.storageKey, locale);
+    document.dispatchEvent(new CustomEvent('mergeblocks:localechange', { detail: { locale: locale } }));
+  }
+
+  function initialize() {
+    var saved = window.MergeBlocksStorage.get(config.storageKey);
+    var locale = window.MergeBlocksLocaleDetector.detectLocale(saved, [], config.supportedLocales, config.defaultLocale);
+    applyLocale(locale, false);
+    return locale;
+  }
+
+  window.MergeBlocksI18n = {
+    init: initialize,
+    setLocale: function (locale) { applyLocale(locale, true); },
+    t: function (path, parameters) { return interpolate(translate(path, currentLocale), parameters); },
+    getLocale: function () { return currentLocale; }
+  };
+}());
+
+(function () {
+  'use strict';
+
+  window.MergeBlocksAnalytics = {
+    track: function (eventName, parameters) {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', eventName, parameters || {});
+      }
+    }
+  };
+}());
+
+(function () {
+  'use strict';
+
+  function initializeImageFallbacks() {
+    document.querySelectorAll('.game-card img').forEach(function (image) {
+      function applyFallback() {
+        if (image.dataset.fallbackApplied) return;
+        image.dataset.fallbackApplied = 'true';
+        image.src = '/assets/images/games/game-placeholder.svg';
+      }
+      image.addEventListener('error', applyFallback);
+      if (image.complete && image.naturalWidth === 0) applyFallback();
+    });
+  }
+
+  window.MergeBlocksImages = { init: initializeImageFallbacks };
+}());
+
+(function () {
+  'use strict';
+
+  // 自动调整 iframe 大小，保持宽高比
+  window.addEventListener('resize', resizeGame);
+  function resizeGame() {
+    var g = document.getElementById('game');
+    var aspect = 935 / 1662;  // 高度/宽度
+    var container = document.getElementById('game-col');
+    if (!g || !container) return;
+    var containerWidth = container.clientWidth;
+    g.width = containerWidth;
+    g.height = containerWidth * aspect;
+  }
+  resizeGame();
+  window.MergeBlocksResizeGame = resizeGame;
+}());
+
+(function () {
+  'use strict';
+
+  async function enterFullscreen() {
+    var gameShell = document.getElementById('game-shell');
+    var status = document.getElementById('game-status');
+    if (status) status.textContent = '';
+    try {
+      if (!gameShell || typeof gameShell.requestFullscreen !== 'function') throw new Error('Fullscreen API unavailable');
+      await gameShell.requestFullscreen();
+      window.MergeBlocksAnalytics.track('fullscreen_enter');
+      return true;
+    } catch (error) {
+      if (status) status.textContent = window.MergeBlocksI18n.t('fullscreenError');
+      return false;
+    }
+  }
+
+  window.MergeBlocksFullscreen = { enter: enterFullscreen };
+}());
+
+(function () {
+  'use strict';
+
+  function initializeOverlay() {
+    var overlay = document.getElementById('mobile-overlay');
+    var button = document.getElementById('play-button');
+    if (!overlay || !button) return;
+
+    button.addEventListener('click', async function () {
+      overlay.hidden = true;
+      window.MergeBlocksAnalytics.track('game_start', { input_type: 'overlay' });
+      await window.MergeBlocksFullscreen.enter();
+    });
+  }
+
+  window.MergeBlocksMobileOverlay = { init: initializeOverlay };
+}());
+
+(function () {
+  'use strict';
+
+  function initialize() {
+    window.MergeBlocksI18n.init();
+    window.MergeBlocksMobileOverlay.init();
+    window.MergeBlocksImages.init();
+    window.MergeBlocksResizeGame();
+
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
+    document.getElementById('language-select').addEventListener('change', function (event) {
+      window.MergeBlocksI18n.setLocale(event.target.value);
+      window.MergeBlocksAnalytics.track('language_change', { locale: event.target.value });
+    });
+    document.getElementById('fullscreen-button').addEventListener('click', function () {
+      window.MergeBlocksFullscreen.enter();
+    });
+    document.querySelectorAll('.play-again-link').forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        var gameSection = document.getElementById('game-section');
+        var fullscreenButton = document.getElementById('fullscreen-button');
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        gameSection.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+        fullscreenButton.focus({ preventScroll: true });
+      });
+    });
+    document.querySelectorAll('.game-card a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        window.MergeBlocksAnalytics.track('related_game_click', {
+          path: link.getAttribute('href'),
+          game_slug: link.closest('[data-game-slug]').dataset.gameSlug
+        });
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initialize);
+  else initialize();
+}());
+
+    </script>
+  </body>
+</html>
